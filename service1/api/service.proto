@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package services1;
+
+option go_package =  "API/service1;service1";
+
+service ServiceA {
+  rpc GetResponse (Request) returns (Response);
+}
+
+
+message Request {
+  string message = 1;
+}
+
+message Response {
+  string message = 1;
+}

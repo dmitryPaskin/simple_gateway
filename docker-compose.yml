@@ -1,0 +1,35 @@
+
+services:
+  gateway:
+    container_name: gateway
+    build:
+      context: ./gateway
+      dockerfile: Dockerfile
+    depends_on:
+      - service1
+      - service2
+    ports:
+      - "8080:8080"
+    networks:
+      - mylocal
+
+  service1:
+    container_name: service1
+    build:
+      context: ./service1
+      dockerfile: Dockerfile
+    networks:
+      - mylocal
+
+  service2:
+    container_name: service2
+    build:
+      context: ./service2
+      dockerfile: Dockerfile
+    networks:
+      - mylocal
+
+networks:
+  mylocal:
+    driver: bridge
+    external: true
